@@ -13,7 +13,7 @@
       "prefix": "ng-transition-issues16",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/apps/ng-transition-issues16",
             "index": "apps/ng-transition-issues16/src/index.html",
@@ -26,7 +26,10 @@
               "apps/ng-transition-issues16/src/assets"
             ],
             "styles": ["apps/ng-transition-issues16/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "apps/ng-transition-issues16/tailwind-webpack.config.js"
+            }
           },
           "configurations": {
             "production": {
@@ -60,10 +63,13 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "browserTarget": "ng-transition-issues16:build",
-            "proxyConfig": "apps/ng-transition-issues16/proxy.conf.json"
+            "proxyConfig": "apps/ng-transition-issues16/proxy.conf.json",
+            "customWebpackConfig": {
+              "path": "apps/ng-transition-issues16/tailwind-webpack.config.js"
+            }
           },
           "configurations": {
             "production": {
