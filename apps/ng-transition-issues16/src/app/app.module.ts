@@ -1,12 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgTransitionModule } from 'ng-transition';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    NgTransitionModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

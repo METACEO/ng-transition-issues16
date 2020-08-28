@@ -9,5 +9,6 @@ import { Message } from '@ng-transition-issues16/api-interfaces';
 })
 export class AppComponent {
   hello$ = this.http.get<Message>('/api/hello');
+  showSlide = false;
   constructor(private http: HttpClient) {}
 }
