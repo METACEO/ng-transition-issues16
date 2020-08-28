@@ -1,0 +1,20 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "ngTransitionIssues16",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "ng-transition-issues16",
+      "kebab-case"
+    ]
+  },
+  "linterOptions": {
+    "exclude": ["!**/*"]
+  }
+}
