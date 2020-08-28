@@ -98,6 +98,15 @@
             "passWithNoTests": true,
             "setupFile": "apps/ng-transition-issues16/src/test-setup.ts"
           }
+        },
+        "start-local": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "npm run nx -- run api:serve",
+              "npm run nx -- run ng-transition-issues16:serve"
+            ]
+          }
         }
       }
     },
