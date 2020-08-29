@@ -24,6 +24,8 @@ export class AppComponent {
   public handleAutomaticProfileDropdownClose($event: MouseEvent) {
     const profileDropdown = this.$profileDropdown?.nativeElement;
     const target = $event?.target as HTMLElement;
+    console.log({ profileDropdown });
+    console.log({ target })
     this.store.dispatch(appActions.userClickedSomewhereHandleDropdown({ profileDropdown, target }))
   }
 
