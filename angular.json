@@ -32,6 +32,22 @@
             }
           },
           "configurations": {
+            "mock-production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/ng-transition-issues16/src/environments/environment.ts",
+                  "with": "apps/ng-transition-issues16/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false
+            },
             "production": {
               "fileReplacements": [
                 {
