@@ -13,9 +13,19 @@ import * as reducersRoot from './reducers';
 })
 export class AppComponent {
   hello$ = this.http.get<Message>('/api/hello');
+  showHamburgerMenu$ = this.store.pipe(select(reducersRoot.selectAppHamburgerMenuOpened))
+  showProfileDropdown$ = this.store.pipe(select(reducersRoot.selectAppProfileDropdownOpened))
   showSlide$ = this.store.pipe(select(reducersRoot.selectAppSlideOpened))
   constructor(private http: HttpClient,
               private store: Store<reducersRoot.State>) {}
+
+  public userClickedHamburgerButton(): void {
+    this.store.dispatch(appActions.userClickedHamburgerButton());
+  }
+
+  public userClickedProfileButton(): void {
+    this.store.dispatch(appActions.userClickedProfileButton());
+  }
 
   public userClickedSlideToggle(): void {
     this.store.dispatch(appActions.userClickedSlideToggle());
