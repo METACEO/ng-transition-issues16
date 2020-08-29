@@ -14,7 +14,7 @@
             [attr.aria-checked]="showSlide ? 'true' : 'false'"
             [class.bg-indigo-600]="showSlide"
             [class.bg-gray-200]="!showSlide"
-            (click)="showSlide$.next(!showSlide)">
+            (click)="userClickedSlideToggle()">
         <span
           aria-hidden="true"
           class="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transform transition ease-in-out duration-200"
@@ -59,7 +59,7 @@
                class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
             <button aria-label="Close panel"
                     class="text-gray-300 hover:text-white transition ease-in-out duration-150"
-                    (click)="showSlide$.next(false)">
+                    (click)="userClickedSlideExit()">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
