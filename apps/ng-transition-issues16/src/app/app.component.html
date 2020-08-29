@@ -1,82 +1,84 @@
-<div class="text-center">
-  <h1 class="font-bold">Welcome to ng-transition-issues16!</h1>
-  <img class="mx-auto"
-       width="450"
-       src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-  />
+<ng-container *rxLet="showSlide$; let showSlide">
+  <div class="text-center">
+    <h1 class="font-bold">Welcome to ng-transition-issues16!</h1>
+    <img class="mx-auto"
+         width="450"
+         src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"/>
 
-  <div>Message: {{ hello$ | async | json }}</div>
+    <div>Message: {{ hello$ | async | json }}</div>
 
-  <div class="flex justify-center align-middle mt-4">
-    <span role="checkbox"
-          tabindex="0"
-          class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline"
-          [attr.aria-checked]="showSlide ? 'true' : 'false'"
-          [class.bg-indigo-600]="showSlide"
-          [class.bg-gray-200]="!showSlide"
-          (click)="showSlide = !showSlide">
-      <span
-        aria-hidden="true"
-        class="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transform transition ease-in-out duration-200"
-        [class.translate-x-5]="showSlide"
-        [class.translate-x-0]="!showSlide"
-      ></span>
-    </span>
-    <span class="ml-4">Show slide over</span>
+    <div class="flex justify-center align-middle mt-4">
+      <span role="checkbox"
+            tabindex="0"
+            class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline"
+            [attr.aria-checked]="showSlide ? 'true' : 'false'"
+            [class.bg-indigo-600]="showSlide"
+            [class.bg-gray-200]="!showSlide"
+            (click)="showSlide$.next(!showSlide)">
+        <span
+          aria-hidden="true"
+          class="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transform transition ease-in-out duration-200"
+          [class.translate-x-5]="showSlide"
+          [class.translate-x-0]="!showSlide"
+        ></span>
+      </span>
+      <span class="ml-4">Show slide over</span>
+    </div>
   </div>
-</div>
 
-<div [ngTransition]="showSlide"
-     ngTransitionEnter="duration-500 sm:duration-700"
-     ngTransitionLeave="duration-500 sm:duration-700"
-     class="fixed inset-0 overflow-hidden">
-  <div class="absolute inset-0 overflow-hidden">
-    <div [ngTransition]="showSlide"
-         ngTransitionEnter="ease-in-out duration-500"
-         ngTransitionEnterStart="opacity-0"
-         ngTransitionEnterEnd="opacity-100"
-         ngTransitionLeave="ease-in-out duration-500"
-         ngTransitionLeaveStart="opacity-100"
-         ngTransitionLeaveEnd="opacity-0"
-         class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-         (click)="showSlide = false"
-    ></div>
-    <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex">
+  <div [ngTransition]="showSlide"
+       ngTransitionEnter="duration-500 sm:duration-700"
+       ngTransitionLeave="duration-500 sm:duration-700"
+       class="fixed inset-0 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
       <div [ngTransition]="showSlide"
-           ngTransitionEnter="transform transition ease-in-out duration-500 sm:duration-700"
-           ngTransitionEnterStart="translate-x-full"
-           ngTransitionEnterEnd="translate-x-0"
-           ngTransitionLeave="transform transition ease-in-out duration-500 sm:duration-700"
-           ngTransitionLeaveStart="translate-x-0"
-           ngTransitionLeaveEnd="translate-x-full"
-           class="relative w-screen max-w-md">
+           ngTransitionEnter="ease-in-out duration-500"
+           ngTransitionEnterStart="opacity-0"
+           ngTransitionEnterEnd="opacity-100"
+           ngTransitionLeave="ease-in-out duration-500"
+           ngTransitionLeaveStart="opacity-100"
+           ngTransitionLeaveEnd="opacity-0"
+           class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+      ></div>
+      <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex">
         <div [ngTransition]="showSlide"
-             ngTransitionEnter="ease-in-out duration-500"
-             ngTransitionEnterStart="opacity-0"
-             ngTransitionEnterEnd="opacity-100"
-             ngTransitionLeave="ease-in-out duration-500"
-             ngTransitionLeaveStart="opacity-100"
-             ngTransitionLeaveEnd="opacity-0"
-             class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
-          <button aria-label="Close panel" class="text-gray-300 hover:text-white transition ease-in-out duration-150" (click)="showSlide = false">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <div class="h-full flex flex-col space-y-6 py-6 bg-white shadow-xl overflow-y-scroll">
-          <header class="px-4 sm:px-6">
-            <h2 class="text-lg leading-7 font-medium text-gray-900">
-              Panel title
-            </h2>
-          </header>
-          <div class="relative flex-1 px-4 sm:px-6">
-            <div class="absolute inset-0 px-4 sm:px-6">
-              <div class="h-full border-2 border-dashed border-gray-200"></div>
+             ngTransitionEnter="transform transition ease-in-out duration-500 sm:duration-700"
+             ngTransitionEnterStart="translate-x-full"
+             ngTransitionEnterEnd="translate-x-0"
+             ngTransitionLeave="transform transition ease-in-out duration-500 sm:duration-700"
+             ngTransitionLeaveStart="translate-x-0"
+             ngTransitionLeaveEnd="translate-x-full"
+             class="relative w-screen max-w-md">
+          <div [ngTransition]="showSlide"
+               ngTransitionEnter="ease-in-out duration-500"
+               ngTransitionEnterStart="opacity-0"
+               ngTransitionEnterEnd="opacity-100"
+               ngTransitionLeave="ease-in-out duration-500"
+               ngTransitionLeaveStart="opacity-100"
+               ngTransitionLeaveEnd="opacity-0"
+               class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
+            <button aria-label="Close panel"
+                    class="text-gray-300 hover:text-white transition ease-in-out duration-150"
+                    (click)="showSlide$.next(false)">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="h-full flex flex-col space-y-6 py-6 bg-white shadow-xl overflow-y-scroll">
+            <header class="px-4 sm:px-6">
+              <h2 class="text-lg leading-7 font-medium text-gray-900">
+                Panel title
+              </h2>
+            </header>
+            <div class="relative flex-1 px-4 sm:px-6">
+              <div class="absolute inset-0 px-4 sm:px-6">
+                <div class="h-full border-2 border-dashed border-gray-200"></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
-</div>
+</ng-container>
