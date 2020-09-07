@@ -20,16 +20,15 @@ export class AppEffects {
     ofType(appActions.userClickedSomewhereHandleDropdown),
     concatMap(action => of(action).pipe(withLatestFrom(this.store$))),
     switchMap(([action, store]) => {
-      const { profileDropdown, target } = action;
+      const { clickedWithinProfile } = action;
       const { profileDropdownOpened } = store.app;
-      // If there's no good input or we're
-      // not even open, short-circuit.
-      if (!target || !profileDropdown || !profileDropdownOpened) {
+      // If we're not even open, short-circuit.
+      if (!profileDropdownOpened) {
         return EMPTY;
       }
       // Otherwise close the popout if the
       // click is outside our container.
-      if (!profileDropdown.contains(target)) {
+      if (!clickedWithinProfile) {
         return of(appActions.userClickedProfileButton());
       }
       return EMPTY;

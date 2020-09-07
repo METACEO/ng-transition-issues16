@@ -5,6 +5,5 @@ export const userClickedProfileButton = createAction('[App] User Clicked Profile
 export const userClickedSlideToggle = createAction('[App] User Clicked Slide Toggle');
 export const userClickedSlideExit = createAction('[App] User Clicked Slide Exit');
 export const userClickedSomewhereHandleDropdown = createAction('[App] User Clicked Somewhere Handle Dropdown', props<{
-  profileDropdown: HTMLDivElement,
-  target: HTMLElement
+  clickedWithinProfile: boolean;
 }>());

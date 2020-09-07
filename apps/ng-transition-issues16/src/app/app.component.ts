@@ -24,9 +24,12 @@ export class AppComponent {
   public handleAutomaticProfileDropdownClose($event: MouseEvent) {
     const profileDropdown = this.$profileDropdown?.nativeElement;
     const target = $event?.target as HTMLElement;
-    console.log({ profileDropdown });
-    console.log({ target })
-    this.store.dispatch(appActions.userClickedSomewhereHandleDropdown({ profileDropdown, target }))
+    // If there's no good input, short-circuit.
+    if (!target || !profileDropdown) {
+      return;
+    }
+    const clickedWithinProfile = profileDropdown.contains(target);
+    this.store.dispatch(appActions.userClickedSomewhereHandleDropdown({ clickedWithinProfile }))
   }
 
   constructor(private http: HttpClient,
